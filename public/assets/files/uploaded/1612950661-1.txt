@@ -1,0 +1,11 @@
+composer require laravel/ui --dev
+
+php artisan ui bootstrap --auth
+
+composer install  
+
+php artisan migrate
+
+npm install & npm run dev
+
+composer dump-autoload
