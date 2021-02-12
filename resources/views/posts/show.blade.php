@@ -10,7 +10,9 @@
         </div>
 
         <div class="col-6">
-            <img src="{{$post->image}}" width="100%" alt="image">
+            @if($post->image)
+             <img src="{{'/'.$post->image}}" width="100%" alt="image">
+            @endif
         </div>
     </div>
     <div class="row">

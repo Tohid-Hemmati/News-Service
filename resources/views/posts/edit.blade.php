@@ -40,11 +40,11 @@
             <label for="status"> status</label><br>
 
         </div>
-
-        <div>
-            <img src="{{$post->image}}" width="100px" alt="image">
-        </div>
-
+        @if($post->image)
+            <div>
+                <img src="{{'/'.$post->image}}" width="100px" alt="image">
+            </div>
+        @endif
         <div class="form-group">
             <label for="image"> Change cover image</label>
             <input class="form-control-file" type="file" name="image">

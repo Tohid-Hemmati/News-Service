@@ -46,7 +46,7 @@
         </div>
         <br>
         <div class="form-group">
-            <label for="files"> add files to post gallery</label>
+            <label for="files"> add files to news</label>
             <input class="form-control-file" type="file" name="files[]" multiple>
         </div>
 

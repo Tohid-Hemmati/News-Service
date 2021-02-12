@@ -140,8 +140,15 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if($post->image) {
+            unlink($post->image);
+        };
+        foreach ($post->files as $file){
+            unlink($file->url);
+            $file->delete();
+        }
         $post->delete();
-        unlink($post->image);
+
         return redirect(route('posts.index'));
     }
 }

@@ -32,7 +32,11 @@
                 <td>{{$post->category->name}}</td>
                 <td>{{$post->news_header}}</td>
                 <td>{{$post->description}}</td>
-                <td><img style="max-width:100px " src="{{$post->image}}"></td>
+                @if($post->image)
+                <td><img style="max-width:100px " src="{{'/'.$post->image}}"></td>
+                @else
+                    <td>No image</td>
+                @endif
                 @if($post->status==1)
                     <td> Active Author</td>
                 @else
@@ -52,7 +56,7 @@
                         <form method="post" action="{{route('posts.destroy',$post->id)}}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
                         </form>
                     </td>
                 @endcan
