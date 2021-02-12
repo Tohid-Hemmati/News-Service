@@ -80,7 +80,7 @@ class PostController extends Controller
                 ]);
             }
         }
-        return redirect()->back();
+        return redirect(route('posts.index'));
     }
 
     /**
@@ -102,7 +102,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $categories = Category::all();
+        return view('posts.edit',compact('post','categories'));
     }
 
     /**
@@ -114,7 +115,21 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        if ($request['image'] !== '') {
+            unlink($post->image);
+            $image =ImageUploader($request['image']);
+        } else {
+            $image = $post->image;
+        }
+        $post->update([
+            'category_id' => $request['category_id'],
+            'news_header' => $request['news_header'],
+            'description' => $request['description'],
+            'status' => $request->get('status'),
+            'image' => $image,
+            'time' => now(),
+        ]);
+        return redirect(route('posts.index'));
     }
 
     /**
@@ -127,5 +142,6 @@ class PostController extends Controller
     {
         $post->delete();
         unlink($post->image);
+        return redirect(route('posts.index'));
     }
 }

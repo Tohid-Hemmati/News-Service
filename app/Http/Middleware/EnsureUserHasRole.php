@@ -17,7 +17,7 @@ class EnsureUserHasRole
      */
     public function handle(Request $request, Closure $next, $role)
     {
-        if ($request->user()->hasRole('super_admin')) {
+        if ($request->user()->hasRole('super-admin')) {
             return $next($request);
         }
         if (!$request->user()->hasRole($role)) {

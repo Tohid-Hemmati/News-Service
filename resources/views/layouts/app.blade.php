@@ -113,12 +113,18 @@
                 <li>
                     <a href="{{route('posts.index')}}">News</a>
                 </li>
+                @if(auth()->user()->hasRole('super-admin')||auth()->user()->hasRole('author'))
+                <li>
+                    <a href="{{route('posts.create')}}">Creating News</a>
+                </li>
+                    <li>
+                        <a href="{{route('category.create')}}">Creating New Category</a>
+                    </li>
+
                 <li>
                     <a href="{{route('category.index')}}">News Categories</a>
                 </li>
-                <li>
-                    <a href="{{route('category.create')}}">Creating New Category</a>
-                </li>
+                @endif
             </ul>
         </div>
         <main class="col-sm-9 py-4">

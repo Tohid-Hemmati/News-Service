@@ -23,7 +23,9 @@ class CreatePostsTable extends Migration
             $table->dateTime('time');
             $table->boolean('status')->default(0);
 
-            $table->foreign('author_id')->references('id')->on('users');
+            $table->foreign('author_id')->references('id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
