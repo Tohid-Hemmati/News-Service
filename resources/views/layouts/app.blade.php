@@ -150,6 +150,13 @@
             <div class="row">
                 <div class="col-sm-3 sidenav my-4">
                     <ul>
+                        @if(auth()->user()->hasRole('super-admin'))
+                        <li>
+                            <a href="{{ route('users.index') }}"
+                                >User Role Management</a
+                            >
+                        </li>
+                        @endif
                         <li>
                             <a href="{{ route('posts.index') }}">News</a>
                         </li>
