@@ -6,6 +6,7 @@
             <td>#</td>
             <td>User Name</td>
             <td>Email</td>
+            <td>Users Role</td>
         </tr>
     </thead>
     <tbody>
