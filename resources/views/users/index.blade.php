@@ -35,26 +35,27 @@
         @endforeach
     </tbody>
 </table>
-@endsection @push('js')
-<script>
-    function updateRole(selectObject) {
-        let user_id_from_select = selectObject.id.replace("user_", "");
-        let role_id_from_select = selectObject.value;
+@endsection
+@push('js')
+    <script>
+        function updateRole(selectObject) {
+            let user_id_from_select = selectObject.id.replace("user_", "");
+            let role_id_from_select = selectObject.value;
 
-        $.ajax({
-            headers: {
-                "X-CSRF-Token": $('meta[name="csrf-token"]').attr("content"),
-            },
-            url: "{{route('user.update.role')}}",
-            data: {
-                user_id: user_id_from_select,
-                role_id: role_id_from_select,
-            },
-            type: "post",
-            success: function (responce) {
-                alert(responce);
-            },
-        });
-    }
+            $.ajax({
+                headers: {
+                    "X-CSRF-Token": $('meta[name="csrf-token"]').attr("content"),
+                },
+                url: "{{route('user.update.role')}}",
+                data: {
+                    user_id: user_id_from_select,
+                    role_id: role_id_from_select,
+                },
+                type: "post",
+                success: function (responce) {
+                    alert(responce);
+                },
+            });
+        }
 </script>
 @endpush

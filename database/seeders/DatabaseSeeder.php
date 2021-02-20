@@ -26,5 +26,12 @@ class DatabaseSeeder extends Seeder
              'role_id' =>1,
          ]);
 
+         \App\Models\User::create([
+            'name'=> 'author',
+            'email' => 'author@autho.info',
+            'password' => Hash::make('password'),
+            'role_id' =>2,
+        ]);
+
     }
 }
